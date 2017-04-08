@@ -1,4 +1,13 @@
-<h1>
-  {{title}} <i class="fa fa-check"></i>
-</h1>
-<router-outlet></router-outlet>
+<h1>Set the LEDs</h1>
+
+<md-slide-toggle #r color="red" (change)="red(r.checked)">
+  Red
+</md-slide-toggle>
+
+<md-slide-toggle #y color="yellow" (change)="yellow(y.checked)">
+  Yellow
+</md-slide-toggle>
+
+<md-slide-toggle #b color="blue" (change)="blue(b.checked)">
+  Blue
+</md-slide-toggle>

@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { LEDsService } from './leds.service';
 import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -19,7 +20,9 @@ import { NgModule } from '@angular/core';
     MaterialModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    LEDsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

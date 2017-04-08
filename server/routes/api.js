@@ -25,10 +25,10 @@ const states = new Map([
 ]);
 
 router.put('/led/:color/:state', (req, res) => {
+  console.log(`${JSON.stringify(req.params)}`);
   const led = leds.get(req.params['color']);
   const state = states.get(req.params['state']);
   rpio.write(led, state);
-  console.log(`${led}=${state}`);
   res.sendStatus(200);
 });
 

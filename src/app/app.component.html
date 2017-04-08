@@ -1,13 +1,17 @@
-<h1>Set the LEDs</h1>
+<main>
 
-<md-slide-toggle #r color="red" (change)="red(r.checked)">
-  Red
-</md-slide-toggle>
+  <h1>Set the LEDs</h1>
 
-<md-slide-toggle #y color="yellow" (change)="yellow(y.checked)">
-  Yellow
-</md-slide-toggle>
+  <md-slide-toggle red #r color="accent" (change)="red(r.checked)">
+    Red
+  </md-slide-toggle>
 
-<md-slide-toggle #b color="blue" (change)="blue(b.checked)">
-  Blue
-</md-slide-toggle>
+  <md-slide-toggle yellow #y color="accent" (change)="yellow(y.checked)">
+    Yellow
+  </md-slide-toggle>
+
+  <md-slide-toggle blue #b color="accent" (change)="blue(b.checked)">
+    Blue
+  </md-slide-toggle>
+
+</main>

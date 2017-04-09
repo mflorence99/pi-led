@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { LEDsService } from './leds.service';
+import { AfterViewInit, Component } from '@angular/core';
+
+import { AppState } from './app-state';
+import { LEDService } from './led.service';
 
 @Component({
   selector: 'led-root',
@@ -7,20 +9,16 @@ import { LEDsService } from './leds.service';
   styleUrls: ['./app.component.less']
 })
 
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
+  appState = new AppState();
 
-  constructor(private leds: LEDsService) { }
+  constructor(public ledService: LEDService) { }
 
-  red(state: boolean) {
-    this.leds.setLED('red', state ? 'on' : 'off');
-  }
-
-  yellow(state: boolean) {
-    this.leds.setLED('yellow', state ? 'on' : 'off');
-  }
-
-  blue(state: boolean) {
-    this.leds.setLED('blue', state ? 'on' : 'off');
+  ngAfterViewInit() {
+    this.ledService.getAll()
+      .subscribe((appState: AppState) => {
+        this.appState = appState;
+      });
   }
 
 }

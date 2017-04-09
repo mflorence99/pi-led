@@ -2,16 +2,12 @@
 
   <h1>Set the LEDs</h1>
 
-  <md-slide-toggle red #r color="accent" (change)="red(r.checked)">
-    Red
-  </md-slide-toggle>
+  <div *ngFor="let led of appState.leds">
 
-  <md-slide-toggle yellow #y color="accent" (change)="yellow(y.checked)">
-    Yellow
-  </md-slide-toggle>
+    <md-checkbox (change)="ledService.setOne(led, $event.checked)" [checked]="appState[led]">
+      <img src="/assets/pin_{{led}}.png">
+    </md-checkbox>
 
-  <md-slide-toggle blue #b color="accent" (change)="blue(b.checked)">
-    Blue
-  </md-slide-toggle>
+  </div>
 
 </main>

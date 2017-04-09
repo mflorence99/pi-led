@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { LEDsService } from './leds.service';
+import { LEDService } from './led.service';
 import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -13,15 +13,15 @@ import { NgModule } from '@angular/core';
     AppComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
     HttpModule,
     FlexLayoutModule,
-    MaterialModule,
-    AppRoutingModule
+    MaterialModule
   ],
   providers: [
-    LEDsService
+    LEDService
   ],
   bootstrap: [AppComponent]
 })

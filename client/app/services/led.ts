@@ -1,9 +1,9 @@
 import * as Rx from 'rxjs/Rx';
 
-import { AppState } from './app-state';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environment';
+import { Setting } from '../models/setting';
+import { environment } from '../../environments/environment';
 
 export type LED = 'red' | 'yellow' | 'blue';
 
@@ -12,18 +12,10 @@ export class LEDService {
 
   constructor(private http: Http) { }
 
-  getAll(): Rx.Observable<AppState> {
+  getAll(): Rx.Observable<Setting[]> {
     const uri = `${environment.cors}/api/leds`;
     return this.http.get(uri)
-      .map(response => response.json())
-      .map((settings: [[string, boolean]]) => {
-        const appState = new AppState();
-        settings.forEach(setting => {
-          appState.leds.push(setting[0]);
-          appState[setting[0]] = setting[1];
-        });
-        return appState;
-      });
+      .map(response => response.json());
   }
 
   getOne(led: LED): Rx.Observable<boolean> {
@@ -33,13 +25,8 @@ export class LEDService {
       .map((response: {state}) => response.state);
   }
 
-  setAll(appState: AppState) {
+  setAll(settings: Setting[]) {
     const uri = `${environment.cors}/api/leds`;
-    const settings = [];
-    appState.leds.forEach(led => {
-      const setting = [led, appState[led]];
-      settings.push(setting);
-    });
     this.http.put(uri, settings).subscribe();
   }
 

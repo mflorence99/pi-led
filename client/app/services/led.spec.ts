@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { LEDService } from './led.service';
+import { LEDService } from './led';
 
 describe('LEDService', () => {
   beforeEach(() => {

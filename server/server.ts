@@ -46,55 +46,55 @@ app.use((req: express.Request,
   next();
 });
 
-app.get('/isalive', (req: express.Request,
-                     res: express.Response) => {
-  res.sendStatus(200);
-});
-
-app.get('/leds', (req: express.Request,
-                  res: express.Response) => {
-  const settings = [];
-  leds.forEach((v, k) => {
-    const setting = [k, lookup.get(rpio.read(v))];
-    settings.push(setting);
+app.get('/isalive',
+  (req: express.Request, res: express.Response) => {
+    res.sendStatus(200);
   });
-  console.log(`GET LEDS = ${JSON.stringify(settings)}`);
-  res.json(settings);
-});
 
-app.put('/leds', (req: express.Request,
-                  res: express.Response) => {
-  console.log(`SET LEDS ${JSON.stringify(req.body)}`);
-  const settings = req.body;
-  settings.forEach(setting => {
-    const led = leds.get(setting[0]);
-    const state = states.get(String(setting[1]));
+app.get('/api/leds',
+  (req: express.Request, res: express.Response) => {
+    const settings = [];
+    leds.forEach((v, k) => {
+      const setting = [k, lookup.get(rpio.read(v))];
+      settings.push(setting);
+    });
+    console.log(`GET LEDS = ${JSON.stringify(settings)}`);
+    res.json(settings);
+  });
+
+app.put('/api/leds',
+  (req: express.Request, res: express.Response) => {
+    console.log(`SET LEDS ${JSON.stringify(req.body)}`);
+    const settings = req.body;
+    settings.forEach(setting => {
+      const led = leds.get(setting[0]);
+      const state = states.get(String(setting[1]));
+      rpio.write(led, state);
+    });
+    res.sendStatus(200);
+  });
+
+app.get('/api/led/:color',
+  (req: express.Request, res: express.Response) => {
+    const led = leds.get(req.params['color']);
+    const state = rpio.read(led);
+    console.log(`GET ${JSON.stringify(req.params)} = ${state}`);
+    res.json({state: (state === rpio.HIGH)});
+  });
+
+app.put('/api/led/:color/:state',
+  (req: express.Request, res: express.Response) => {
+    console.log(`SET ${JSON.stringify(req.params)}`);
+    const led = leds.get(req.params['color']);
+    const state = states.get(req.params['state']);
     rpio.write(led, state);
+    res.sendStatus(200);
   });
-  res.sendStatus(200);
-});
 
-app.get('/led/:color', (req: express.Request,
-                        res: express.Response) => {
-  const led = leds.get(req.params['color']);
-  const state = rpio.read(led);
-  console.log(`GET ${JSON.stringify(req.params)} = ${state}`);
-  res.json({state: (state === rpio.HIGH)});
-});
-
-app.put('/led/:color/:state', (req: express.Request,
-                               res: express.Response) => {
-  console.log(`SET ${JSON.stringify(req.params)}`);
-  const led = leds.get(req.params['color']);
-  const state = states.get(req.params['state']);
-  rpio.write(led, state);
-  res.sendStatus(200);
-});
-
-app.get('*', (req: express.Request,
-              res: express.Response) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
+app.get('*',
+  (req: express.Request, res: express.Response) => {
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
+  });
 
 const port = process.env.PORT || '3000';
 app.set('port', port);

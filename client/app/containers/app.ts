@@ -1,20 +1,23 @@
-import * as Rx from 'rxjs/Rx';
+import * as settingsReducer from '../reducers/settings';
 
-import { Component } from '@angular/core';
-import { LEDService } from '../services/led';
-import { Setting } from '../models/setting';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import { AppState } from '../reducers';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'led-root',
   templateUrl: './app.html',
   styleUrls: ['./app.less']
 })
 
 export class AppComponent {
-  settings: Rx.Observable<Setting[]>;
+  state: Observable<settingsReducer.State>;
 
-  constructor(private ledService: LEDService) {
-    this.settings = this.ledService.getAll();
+  constructor(private store: Store<AppState>) {
+    this.state = this.store.select(state => state.settings);
   }
 
 }

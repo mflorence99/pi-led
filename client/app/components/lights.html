@@ -1,0 +1,11 @@
+<div
+  fxLayout="row"
+  fxLayoutGap="10px">
+
+  <i
+    [ngStyle]="{'color': setting[1]? setting[0] : '#e0e0e0'}"
+    *ngFor="let setting of state.settings"
+    class="fa fa-lightbulb-o fa-2x"
+    fxFlex="32px"></i>
+
+</div>

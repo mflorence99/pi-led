@@ -4,6 +4,7 @@
     "adjacent-overload-signatures": true,
     "class-name": true,
     "comment-format": [true, "check-space"],
+    "curly": false,
     "eofline": true,
     "indent": [true, "spaces"],
     "label-position": true,

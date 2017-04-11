@@ -1,7 +1,12 @@
-<div *ngFor="let setting of settings">
+<div
+  fxLayout="row"
+  fxLayoutGap="10px">
 
-  <md-checkbox (change)="ledService.setOne(setting[0], $event.checked)">
-    <i class="fa fa-lightbulb-o fa-2x" [ngStyle]="{'color': setting[0]}"></i>
+  <md-checkbox
+    (change)="set([setting[0], $event.checked])"
+    [checked]="setting[1]"
+    *ngFor="let setting of state.settings"
+    fxFlex="32px">
   </md-checkbox>
 
 </div>

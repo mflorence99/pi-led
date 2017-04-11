@@ -5,7 +5,7 @@
   <div *ngFor="let led of appState.leds">
 
     <md-checkbox (change)="ledService.setOne(led, $event.checked)" [checked]="appState[led]">
-      <img src="/assets/pin_{{led}}.png">
+      <i class="fa fa-lightbulb-o fa-2x" [ngStyle]="{'color': led}"></i>
     </md-checkbox>
 
   </div>

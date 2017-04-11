@@ -16,9 +16,9 @@ export class LEDService {
     const uri = `${environment.cors}/api/leds`;
     return this.http.get(uri)
       .map(response => response.json())
-      .map((settings: any[]) => {
+      .map((settings: [[string, boolean]]) => {
         const appState = new AppState();
-        settings.forEach((setting: any[]) => {
+        settings.forEach(setting => {
           appState.leds.push(setting[0]);
           appState[setting[0]] = setting[1];
         });

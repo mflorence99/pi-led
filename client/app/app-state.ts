@@ -1,4 +1,4 @@
 export class AppState {
   leds: string[] = [];
-  // [led: string]: boolean;
+  [led: string]: any;
 }

@@ -15,7 +15,7 @@ import { Store } from '@ngrx/store';
 })
 
 export class SwitchesComponent {
-  @Input() state: settingsReducer.State = settingsReducer.initialState;
+  @Input() settings: settingsReducer.State = settingsReducer.initialState;
 
   constructor(private store: Store<AppState>) { }
 

@@ -111,7 +111,8 @@ app.put('/api/led/:color/:state',
 
 app.get('*',
   (req: express.Request, res: express.Response) => {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
+    const name = req.path.substring(1);
+    res.sendFile(path.join(path.join(__dirname, '../dist'), name? name : 'index.html'));
   });
 
 const port = process.env.PORT || '3000';

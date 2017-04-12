@@ -14,10 +14,10 @@ import { Store } from '@ngrx/store';
 })
 
 export class AppComponent {
-  state: Observable<settingsReducer.State>;
+  settings: Observable<settingsReducer.State>;
 
   constructor(private store: Store<AppState>) {
-    this.state = this.store.select(state => state.settings);
+    this.settings = this.store.select(state => state.settings);
   }
 
 }

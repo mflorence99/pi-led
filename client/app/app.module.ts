@@ -1,5 +1,4 @@
 import { AppComponent } from './containers/app';
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
@@ -21,7 +20,6 @@ import { reducers } from './reducers';
     SwitchesComponent
   ],
   imports: [
-    AppRoutingModule,
     BrowserModule,
     CommonModule,
     EffectsModule.run(SettingsEffects),
@@ -35,4 +33,5 @@ import { reducers } from './reducers';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

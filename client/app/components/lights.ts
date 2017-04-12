@@ -10,6 +10,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 
 export class LightsComponent {
-  @Input() state: settingsReducer.State = settingsReducer.initialState;
+  @Input() settings: settingsReducer.State = settingsReducer.initialState;
 
 }

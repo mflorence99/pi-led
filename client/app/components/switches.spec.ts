@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
+import { AppModule } from '../app.module';
 import { SwitchesComponent } from './switches';
 
 describe('SwitchesComponent', () => {
@@ -8,9 +9,9 @@ describe('SwitchesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SwitchesComponent ]
-    })
-    .compileComponents();
+      imports: [ AppModule ],
+      declarations: [ ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

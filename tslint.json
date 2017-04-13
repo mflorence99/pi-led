@@ -18,6 +18,8 @@
     "no-debugger": true,
     "no-duplicate-variable": true,
     "no-eval": true,
+    "no-input-rename": false,
+    "no-output-rename": false,
     "no-reference": true,
     "no-shadowed-variable": true,
     "no-unused-expression": true,

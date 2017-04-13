@@ -6,7 +6,9 @@ import { Action } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { LEDService } from '../services/led';
 import { Observable } from 'rxjs/Observable';
+import { Response } from '@angular/http';
 import { Setting } from '../models/setting';
+import { handleError } from './helper';
 import { of } from 'rxjs/observable/of';
 
 @Injectable()
@@ -18,7 +20,7 @@ export class SettingsEffects {
     .switchMap(() =>
       this.ledService.getAll()
         .map((payload: Setting[]) => new settingsActions.LoadSuccessAction(payload))
-        .catch(error => of(new settingsActions.LoadFailureAction(error)))
+        .catch((error: Response) => of(new settingsActions.LoadFailureAction(handleError(error))))
     );
 
   @Effect() set: Observable<Action> = this.actions
@@ -27,7 +29,7 @@ export class SettingsEffects {
     .switchMap((setting: Setting) =>
       this.ledService.setOne(setting[0], setting[1])
         .map((payload: Setting[]) => new settingsActions.SetSuccessAction(payload))
-        .catch(error => of(new settingsActions.SetFailureAction(error)))
+        .catch((error: Response) => of(new settingsActions.SetFailureAction(handleError(error))))
     );
 
   constructor(private actions: Actions,

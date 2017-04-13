@@ -5,6 +5,7 @@
   <md-checkbox
     (change)="set([setting[0], $event.checked])"
     [checked]="setting[1]"
+    [disabled]="settings.working"
     *ngFor="let setting of settings.settings"
     fxFlex="32px">
   </md-checkbox>

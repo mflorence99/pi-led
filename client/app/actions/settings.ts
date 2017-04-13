@@ -23,7 +23,7 @@ export class LoadSuccessAction implements Action {
 
 export class LoadFailureAction implements Action {
   type = ActionTypes.LOAD_FAILURE;
-  constructor(public payload: any) { }
+  constructor(public payload: string) { }
 }
 
 export class SetAction implements Action {
@@ -38,7 +38,7 @@ export class SetSuccessAction implements Action {
 
 export class SetFailureAction implements Action {
   type = ActionTypes.SET_FAILURE;
-  constructor(public payload: any) { }
+  constructor(public payload: string) { }
 }
 
 export type Actions

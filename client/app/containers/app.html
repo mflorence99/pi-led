@@ -2,10 +2,16 @@
 
   <h1>pi-led</h1>
 
+  <led-error [settings]="settings | async">
+  </led-error>
+
   <led-switches [settings]="settings | async">
   </led-switches>
 
   <led-lights [settings]="settings | async">
   </led-lights>
+
+  <led-chart [chart-data]="settings | toChartData | async">
+  </led-chart>
 
 </main>

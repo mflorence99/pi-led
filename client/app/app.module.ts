@@ -13,6 +13,9 @@ import { MaterialModule } from '@angular/material';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NgModule } from '@angular/core';
 import { SettingsEffects } from './effects/settings';
+import { SigmasComponent } from './components/sigmas';
+import { SigmasDataPipe } from './components/sigmas';
+import { SigmasEffects } from './effects/sigmas';
 import { StoreModule } from '@ngrx/store';
 import { SwitchesComponent } from './components/switches';
 import { reducers } from './reducers';
@@ -23,6 +26,8 @@ const DECLARATIONS = [
   ChartComponent,
   ChartDataPipe,
   ErrorComponent,
+  SigmasComponent,
+  SigmasDataPipe,
   SwitchesComponent
 ];
 
@@ -34,6 +39,7 @@ const DECLARATIONS = [
     BrowserModule,
     CommonModule,
     EffectsModule.run(SettingsEffects),
+    EffectsModule.run(SigmasEffects),
     FlexLayoutModule,
     HttpModule,
     MaterialModule,

@@ -5,5 +5,6 @@
 
 export const environment = {
   cors: 'http://raspberrypi:3000',
+  ws: 'ws://raspberrypi:8080',
   production: false
 };

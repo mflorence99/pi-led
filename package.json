@@ -26,6 +26,7 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^2.0.2",
     "@ngrx/store": "^2.2.1",
+    "angular2-websocket": "^0.9.1",
     "body-parser": "^1.17.1",
     "core-js": "^2.4.1",
     "express": "^4.15.2",
@@ -36,7 +37,8 @@
     "roboto-fontface": "^0.7.0",
     "rpio": "^0.9.16",
     "rxjs": "^5.1.0",
-    "web-animations-js": "^2.2.2",
+    "web-animations-js": "2.2.2",
+    "ws": "^2.2.3",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {

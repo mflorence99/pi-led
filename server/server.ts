@@ -34,7 +34,7 @@ process.on('SIGINT', () => {
 
 type Setting = [string, boolean];
 
-const getAll = (): Setting[] => {
+const getSettings = (): Setting[] => {
   const settings: Setting[] = [];
   leds.forEach((v, k) => {
     const setting: Setting = [k, lookup.get(rpio.read(v))];
@@ -43,12 +43,12 @@ const getAll = (): Setting[] => {
   return settings;
 };
 
-const getOne = (color: string): boolean => {
+const getSetting = (color: string): boolean => {
   const led = leds.get(color);
   return lookup.get(rpio.read(led));
 };
 
-const setAll = (settings: Setting[]) => {
+const setSettings = (settings: Setting[]) => {
   settings.forEach(setting => {
     const led = leds.get(setting[0]);
     const state = states.get(String(setting[1]));
@@ -56,9 +56,20 @@ const setAll = (settings: Setting[]) => {
   });
 };
 
-const setOne = (color: string, state: boolean) => {
+const setSetting = (color: string, state: boolean) => {
   const led = leds.get(color);
   rpio.write(led, states.get(String(state)));
+};
+
+type Sigma = [string, number, number];
+
+const getSigmas = (): Sigma[] => {
+  const sigmas: Sigma[] = [];
+  leds.forEach((v, k) => {
+    const sigma: Sigma = [k, Math.random(), Date.now()];
+    sigmas.push(sigma);
+  });
+  return sigmas;
 };
 
 app.use(bodyParser.json());
@@ -82,7 +93,7 @@ app.get('/isalive',
 
 app.get('/api/leds',
   (req: express.Request, res: express.Response) => {
-    const settings = getAll();
+    const settings = getSettings();
     console.log(`GET LEDS = ${JSON.stringify(settings)}`);
     res.json(settings);
   });
@@ -90,23 +101,23 @@ app.get('/api/leds',
 app.put('/api/leds',
   (req: express.Request, res: express.Response) => {
     const settings: Setting[] = req.body;
-    setAll(settings);
+    setSettings(settings);
     console.log(`SET LEDS ${JSON.stringify(req.body)}`);
     res.json(settings);
   });
 
 app.get('/api/led/:color',
   (req: express.Request, res: express.Response) => {
-    const state = getOne(req.params['color']);
+    const state = getSetting(req.params['color']);
     console.log(`GET ${JSON.stringify(req.params)} = ${state}`);
     res.json({state: state});
   });
 
 app.put('/api/led/:color/:state',
   (req: express.Request, res: express.Response) => {
-    setOne(req.params['color'], req.params['state'] === 'true');
+    setSetting(req.params['color'], req.params['state'] === 'true');
     console.log(`SET ${JSON.stringify(req.params)}`);
-    res.json(getAll());
+    res.json(getSettings());
   });
 
 app.get('*',
@@ -118,4 +129,22 @@ app.get('*',
 const port = process.env.PORT || '3000';
 app.set('port', port);
 const server = http.createServer(app);
-server.listen(port, () => console.log(`Express is running on localhost:${port}`));
+server.listen(port, () => {
+  console.log(`Listening on localhost:${port}`);
+});
+
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({path: '/ws/sigmas', port: 8080}, () => {
+  console.log(`Listening on localhost:${8080}`);
+});
+
+wss.on('connection', ws => {
+  let timer = null;
+  const sender = () => {
+    ws.send(JSON.stringify(getSigmas()), error => {
+      if (error && timer)
+        clearInterval(timer);
+    });
+  };
+  timer = setInterval(sender, 1000);
+});

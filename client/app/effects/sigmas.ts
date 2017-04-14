@@ -1,0 +1,31 @@
+import * as sigmasActions from '../actions/sigmas';
+
+import { Actions, Effect } from '@ngrx/effects';
+
+import { Action } from '@ngrx/store';
+import { Injectable } from '@angular/core';
+import { LEDService } from '../services/led';
+import { Observable } from 'rxjs/Observable';
+import { Response } from '@angular/http';
+import { Sigma } from '../models/sigma';
+import { handleError } from './helper';
+import { of } from 'rxjs/observable/of';
+
+@Injectable()
+export class SigmasEffects {
+
+  @Effect() listen: Observable<Action> = this.actions
+    .ofType(sigmasActions.ActionTypes.LISTEN, sigmasActions.ActionTypes.UNLISTEN)
+    .startWith(new sigmasActions.ListenAction())
+    .switchMap((action: Action) => {
+      if (action.type === sigmasActions.ActionTypes.UNLISTEN)
+        return of();
+      else return this.ledService.getSigmas()
+        .map((payload: Sigma[]) => new sigmasActions.ListenSuccessAction(payload))
+        .catch((error: Response) => of(new sigmasActions.ListenFailureAction(handleError(error))));
+    });
+
+  constructor(private actions: Actions,
+              private ledService: LEDService) { }
+
+}

@@ -1,4 +1,5 @@
 import * as settingsReducer from '../reducers/settings';
+import * as sigmasReducer from '../reducers/sigmas';
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
@@ -15,9 +16,11 @@ import { Store } from '@ngrx/store';
 
 export class AppComponent {
   settings: Observable<settingsReducer.State>;
+  sigmas: Observable<sigmasReducer.State>;
 
   constructor(private store: Store<AppState>) {
     this.settings = this.store.select(state => state.settings);
+    this.sigmas = this.store.select(state => state.sigmas);
   }
 
 }

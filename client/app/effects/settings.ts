@@ -17,20 +17,20 @@ export class SettingsEffects {
   @Effect() load: Observable<Action> = this.actions
     .ofType(settingsActions.ActionTypes.LOAD)
     .startWith(new settingsActions.LoadAction())
-    .switchMap(() =>
-      this.ledService.getAll()
+    .switchMap(() => {
+      return this.ledService.getSettings()
         .map((payload: Setting[]) => new settingsActions.LoadSuccessAction(payload))
-        .catch((error: Response) => of(new settingsActions.LoadFailureAction(handleError(error))))
-    );
+        .catch((error: Response) => of(new settingsActions.LoadFailureAction(handleError(error))));
+    });
 
   @Effect() set: Observable<Action> = this.actions
     .ofType(settingsActions.ActionTypes.SET)
     .map((action: settingsActions.SetAction) => action.payload)
-    .switchMap((setting: Setting) =>
-      this.ledService.setOne(setting[0], setting[1])
+    .switchMap((setting: Setting) => {
+      return this.ledService.setSetting(setting[0], setting[1])
         .map((payload: Setting[]) => new settingsActions.SetSuccessAction(payload))
-        .catch((error: Response) => of(new settingsActions.SetFailureAction(handleError(error))))
-    );
+        .catch((error: Response) => of(new settingsActions.SetFailureAction(handleError(error))));
+    });
 
   constructor(private actions: Actions,
               private ledService: LEDService) { }

@@ -25,7 +25,7 @@
     "no-unused-expression": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
-    "no-var-requires": true,
+    "no-var-requires": false,
     "no-trailing-whitespace": false,
     "radix": true,
     "semicolon": [true, "always"],

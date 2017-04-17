@@ -1,2 +1,2 @@
 ts-node homify.ts --client
-ng serve --host 0.0.0.0
+ng build

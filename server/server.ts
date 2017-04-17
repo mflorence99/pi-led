@@ -1,8 +1,11 @@
 import * as bodyParser from 'body-parser';
+import * as chalk from 'chalk';
 import * as express from 'express';
 import * as http from 'http';
 import * as path from 'path';
 import * as rpio from 'rpio';
+
+import { config } from './config';
 
 const app: express.Application = express();
 
@@ -123,19 +126,21 @@ app.put('/api/led/:color/:state',
 app.get('*',
   (req: express.Request, res: express.Response) => {
     const name = req.path.substring(1);
-    res.sendFile(path.join(path.join(__dirname, '../dist'), name? name : 'index.html'));
+     res.sendFile(path.join(path.join(__dirname, '../dist'), name? name : 'home.html'));
   });
 
-const port = process.env.PORT || '3000';
+console.log(chalk.yellow('Config'), config);
+
+const port = 3000;
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port, () => {
-  console.log(`Listening on localhost:${port}`);
+  console.log(chalk.green('HTTP'), `localhost:${port}`);
 });
 
 const WebSocket = require('ws');
-const wss = new WebSocket.Server({path: '/ws/sigmas', port: 8080}, () => {
-  console.log(`Listening on localhost:${8080}`);
+const wss = new WebSocket.Server({path: '/ws/sigmas', port: 4000}, () => {
+  console.log(chalk.green('WS'), `localhost:${4000}`);
 });
 
 wss.on('connection', ws => {

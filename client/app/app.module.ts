@@ -4,6 +4,7 @@ import { ChartComponent } from './components/chart';
 import { ChartDataPipe } from './components/chart';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
+import { Env } from './services/env';
 import { ErrorComponent } from './components/error';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpModule } from '@angular/http';
@@ -54,6 +55,7 @@ const DECLARATIONS = [
     StoreModule
   ],
   providers: [
+    Env,
     LEDService
   ],
   bootstrap: [AppComponent]

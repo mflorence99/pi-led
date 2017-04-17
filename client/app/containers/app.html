@@ -14,7 +14,7 @@
   <led-chart [chart-data]="settings | toChartData | async">
   </led-chart>
 
-  <led-sigmas [sigmas-data]="sigmas | toSigmasData | async">
+  <led-sigmas [sigmas-data]="sigmas | toSigmasData:5 | async">
   </led-sigmas>
 
 </main>

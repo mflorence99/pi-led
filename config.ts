@@ -1,5 +1,8 @@
-export const config = {
+export class Config {
 
-  x: true
+  sigmasCaptureInterval = 1000;
 
-};
+}
+
+
+export const config = new Config();

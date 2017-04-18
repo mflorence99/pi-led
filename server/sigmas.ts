@@ -1,5 +1,7 @@
 import * as chalk from 'chalk';
 import * as express from 'express';
+import * as fs from 'fs';
+import * as https from 'https';
 
 import { Sigma } from './models/sigma';
 import { config } from './config';
@@ -14,13 +16,19 @@ const getSigmas = (): Sigma[] => {
   return sigmas;
 };
 
+const options = {
+  key  : fs.readFileSync(`${__dirname}/ssl/key.pem`),
+  ca   : fs.readFileSync(`${__dirname}/ssl/csr.pem`),
+  cert : fs.readFileSync(`${__dirname}/ssl/cert.pem`)
+};
+
 export const sigmas = (app: express.Application,
                        port: number) => {
 
+  const server = https.createServer(options).listen(port);
   const WebSocket = require('ws');
-  const wss = new WebSocket.Server({path: '/ws/sigmas', port: port}, () => {
-    console.log(chalk.green('Sigmas'), `localhost:${port}`);
-  });
+  const wss = new WebSocket.Server({path: '/ws/sigmas', server: server});
+  console.log(chalk.green('WS /ws/sigmas'), `localhost${port}`);
 
   wss.on('connection', ws => {
     let timer = null;

@@ -10,10 +10,10 @@ const options = {
 };
 
 export const deploy = (app: express.Application,
-                       port: number) => {
-  app.set('port', port);
+                       port: number): https.Server => {
   const server = https.createServer(options, app);
   server.listen(port, () => {
     console.log(chalk.green('HTTPS'), `localhost:${port}`);
   });
+  return server;
 };

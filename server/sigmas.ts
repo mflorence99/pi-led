@@ -1,10 +1,9 @@
 import * as chalk from 'chalk';
 import * as express from 'express';
 
+import { Sigma } from './models/sigma';
 import { config } from './config';
 import { pins } from './leds';
-
-type Sigma = [string, number, number];
 
 const getSigmas = (): Sigma[] => {
   const sigmas: Sigma[] = [];

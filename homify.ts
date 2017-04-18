@@ -10,7 +10,7 @@ if (argv.client)
   apply(path.join(__dirname, './client', 'index.html'),
         path.join(__dirname, './client', 'home.html'));
 
-else if (argv.server) {
+else if (argv.server && fs.existsSync(path.join(__dirname, './dist', 'home.html'))) {
   const stream = remove(path.join(__dirname, './dist', 'home.html'),
                         path.join(__dirname, './dist', 'temp.html'));
   stream.on('finish', () => {

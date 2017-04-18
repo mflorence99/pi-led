@@ -1,2 +1,2 @@
 ts-node homify.ts --client
-ng build
+ng build --prod --aot

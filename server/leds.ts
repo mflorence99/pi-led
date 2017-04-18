@@ -1,6 +1,8 @@
 import * as express from 'express';
 import * as rpio from 'rpio';
 
+import { Setting } from './models/setting';
+
 export const pins = new Map([
   ['red', 15],
   ['yellow', 13],
@@ -26,8 +28,6 @@ process.on('SIGINT', () => {
   });
   process.exit();
 });
-
-type Setting = [string, boolean];
 
 const getSettings = (): Setting[] => {
   const settings: Setting[] = [];

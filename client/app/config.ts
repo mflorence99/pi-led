@@ -1,1 +1,1 @@
-../../config.ts
+../../common/config.ts

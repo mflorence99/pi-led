@@ -1,4 +1,6 @@
+*.log
 core
+dist.tar.gz
 dist/
 home.html
 node_modules/

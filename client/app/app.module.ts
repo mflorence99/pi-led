@@ -9,6 +9,7 @@ import { ErrorComponent } from './components/error';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpModule } from '@angular/http';
 import { LEDService } from './services/led';
+import { LibModule } from '@mflo999/pi-lib';
 import { LightsComponent } from './components/lights';
 import { MaterialModule } from '@angular/material';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
@@ -43,6 +44,7 @@ const DECLARATIONS = [
     EffectsModule.run(SigmasEffects),
     FlexLayoutModule,
     HttpModule,
+    LibModule,
     MaterialModule,
     Ng2GoogleChartsModule,
     StoreModule.provideStore(reducers)
@@ -51,6 +53,7 @@ const DECLARATIONS = [
     ...DECLARATIONS,
     Ng2GoogleChartsModule,
     FlexLayoutModule,
+    LibModule,
     MaterialModule,
     StoreModule
   ],

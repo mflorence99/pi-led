@@ -28,7 +28,7 @@ export const sigmas = (app: express.Application,
   const server = https.createServer(options).listen(port);
   const WebSocket = require('ws');
   const wss = new WebSocket.Server({path: '/ws/sigmas', server: server});
-  console.log(chalk.green('WS /ws/sigmas'), `localhost${port}`);
+  console.log(chalk.green('WS /ws/sigmas'), `localhost:${port}`);
 
   wss.on('connection', ws => {
     let timer = null;

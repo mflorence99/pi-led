@@ -9,11 +9,11 @@ import { ErrorComponent } from './components/error';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpModule } from '@angular/http';
 import { LEDService } from './services/led';
-import { LibModule } from '@mflo999/pi-lib';
 import { LightsComponent } from './components/lights';
 import { MaterialModule } from '@angular/material';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NgModule } from '@angular/core';
+import { PiModule } from '@mflo999/pi-lib';
 import { SettingsEffects } from './effects/settings';
 import { SigmasComponent } from './components/sigmas';
 import { SigmasDataPipe } from './components/sigmas';
@@ -44,17 +44,17 @@ const DECLARATIONS = [
     EffectsModule.run(SigmasEffects),
     FlexLayoutModule,
     HttpModule,
-    LibModule,
     MaterialModule,
     Ng2GoogleChartsModule,
+    PiModule,
     StoreModule.provideStore(reducers)
   ],
   exports: [
     ...DECLARATIONS,
     Ng2GoogleChartsModule,
     FlexLayoutModule,
-    LibModule,
     MaterialModule,
+    PiModule,
     StoreModule
   ],
   providers: [

@@ -1,3 +1,5 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+
 import { AppComponent } from './containers/app';
 import { BrowserModule } from '@angular/platform-browser';
 import { ChartComponent } from './components/chart';
@@ -10,7 +12,6 @@ import { HttpModule } from '@angular/http';
 import { LEDService } from './services/led';
 import { LightsComponent } from './components/lights';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
-import { NgModule } from '@angular/core';
 import { PiModule } from '@mflo999/pi-lib';
 import { SettingsEffects } from './effects/settings';
 import { SigmasComponent } from './components/sigmas';
@@ -33,6 +34,8 @@ const DECLARATIONS = [
 
 @NgModule({
 
+  bootstrap: [AppComponent],
+
   declarations: [
     ...DECLARATIONS
   ],
@@ -46,7 +49,7 @@ const DECLARATIONS = [
     HttpModule,
     Ng2GoogleChartsModule,
     PiModule,
-    StoreModule.provideStore(reducers) 
+    StoreModule.provideStore(reducers)
   ],
 
   exports: [
@@ -61,7 +64,7 @@ const DECLARATIONS = [
     LEDService
   ],
 
-  bootstrap: [AppComponent]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
 

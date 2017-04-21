@@ -2,11 +2,12 @@
   fxLayout="row"
   fxLayoutGap="10px">
 
-  <input type="checkbox"
+  <paper-checkbox
     (change)="set([setting[0], $event.target.checked])"
     [checked]="setting[1]"
     [disabled]="settings.working"
     *ngFor="let setting of settings.settings"
     fxFlex="32px">
+  </paper-checkbox>
 
 </div>

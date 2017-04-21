@@ -9,8 +9,11 @@
       "outDir": "dist",
       "assets": [
         "assets",
+        "bower_components",
+        "elements.html",
         "favicon.ico",
-        "startup.html"
+        "startup.html",
+        "theme.html"
       ],
       "index": "home.html",
       "main": "main.ts",
@@ -20,9 +23,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "led",
       "styles": [
-        "../node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
-        "../node_modules/font-awesome/css/font-awesome.min.css",
-        "styles.css"
+        "../node_modules/font-awesome/css/font-awesome.min.css"
       ],
       "scripts": [
       ],

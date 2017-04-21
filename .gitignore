@@ -1,4 +1,5 @@
 *.log
+bower_components/
 core
 dist.tar.gz
 dist/

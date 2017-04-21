@@ -4,7 +4,7 @@ import * as sigmasReducer from '../reducers/sigmas';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AppState } from '../reducers';
-import { EnvService } from '@mflo999/pi-lib';
+import { EnvService } from 'pi-lib';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { config } from '../config';

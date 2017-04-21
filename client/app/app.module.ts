@@ -12,7 +12,7 @@ import { HttpModule } from '@angular/http';
 import { LEDService } from './services/led';
 import { LightsComponent } from './components/lights';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
-import { PiModule } from '@mflo999/pi-lib';
+import { PiModule } from 'pi-lib';
 import { SettingsEffects } from './effects/settings';
 import { SigmasComponent } from './components/sigmas';
 import { SigmasDataPipe } from './components/sigmas';

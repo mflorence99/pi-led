@@ -12,7 +12,7 @@ import { LEDService } from '../services/led';
 import { Observable } from 'rxjs/Observable';
 import { Response } from '@angular/http';
 import { Sigma } from '../models/sigma';
-import { handleHttpError } from '@mflo999/pi-lib/utils';
+import { handleHttpError } from 'pi-lib/utils';
 import { of } from 'rxjs/observable/of';
 
 @Injectable()

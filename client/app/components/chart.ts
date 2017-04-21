@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
-import { deepCopy } from '@mflo999/pi-lib/utils';
+import { deepCopy } from 'pi-lib/utils';
 
 interface ChartData {
   chartType: string;

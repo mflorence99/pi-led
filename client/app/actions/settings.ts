@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Setting } from '../models/setting';
-import { type } from '@mflo999/pi-lib/utils';
+import { type } from 'pi-lib/utils';
 
 export const ActionTypes = {
   LOAD:           type('[Settings] Load'),

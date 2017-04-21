@@ -2,12 +2,11 @@
   fxLayout="row"
   fxLayoutGap="10px">
 
-  <md-checkbox
-    (change)="set([setting[0], $event.checked])"
+  <input type="checkbox"
+    (change)="set([setting[0], $event.target.checked])"
     [checked]="setting[1]"
     [disabled]="settings.working"
     *ngFor="let setting of settings.settings"
     fxFlex="32px">
-  </md-checkbox>
 
 </div>

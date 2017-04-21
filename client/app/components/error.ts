@@ -5,8 +5,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'led-error',
-  templateUrl: './error.html',
-  styleUrls: ['./error.less']
+  templateUrl: 'error.html',
+  styleUrls: ['error.less']
 })
 
 export class ErrorComponent {

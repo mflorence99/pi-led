@@ -1,6 +1,10 @@
 <main>
 
-  <h1>{{'pi-led' | breakable | ellipsize | jsonify}}</h1>
+  <h1>pi-led</h1>
+
+  <p>Currently a dog's dinner test harness for everything.</p>
+
+  <p>This long string: <b>{{'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=force+TypeScript+rebuild+in+Atom' | piBreakable}}</b> should be breakable.</p>
 
   <led-error [settings]="settings | async">
   </led-error>

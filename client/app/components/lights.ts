@@ -5,8 +5,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'led-lights',
-  templateUrl: './lights.html',
-  styleUrls: ['./lights.less']
+  templateUrl: 'lights.html',
+  styleUrls: ['lights.less']
 })
 
 export class LightsComponent {

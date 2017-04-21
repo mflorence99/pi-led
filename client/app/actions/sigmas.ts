@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Sigma } from '../models/sigma';
-import { type } from './helper';
+import { type } from '@mflo999/pi-lib/utils';
 
 export const ActionTypes = {
   LISTEN:           type('[Sigmas] Listen'),

@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
-import { deepCopy } from './helper';
+import { deepCopy } from '@mflo999/pi-lib/utils';
 
 interface ChartData {
   chartType: string;
@@ -59,8 +59,8 @@ export class ChartDataPipe implements PipeTransform {
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'led-chart',
-  templateUrl: './chart.html',
-  styleUrls: ['./chart.less']
+  templateUrl: 'chart.html',
+  styleUrls: ['chart.less']
 })
 
 export class ChartComponent {

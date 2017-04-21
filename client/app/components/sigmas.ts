@@ -1,3 +1,4 @@
+import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/skip';
 
 import * as sigmasReducer from '../reducers/sigmas';
@@ -6,7 +7,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
-import { deepCopy } from './helper';
+import { deepCopy } from '@mflo999/pi-lib/utils';
 
 interface SigmasData {
   chartType: string;
@@ -98,8 +99,8 @@ export class SigmasDataPipe implements PipeTransform {
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'led-sigmas',
-  templateUrl: './sigmas.html',
-  styleUrls: ['./sigmas.less']
+  templateUrl: 'sigmas.html',
+  styleUrls: ['sigmas.less']
 })
 
 export class SigmasComponent {

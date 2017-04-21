@@ -1,5 +1,5 @@
 import {$WebSocket} from 'angular2-websocket/angular2-websocket';
-import { Env } from './env';
+import { EnvService } from '@mflo999/pi-lib';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
@@ -9,7 +9,7 @@ import { Sigma } from '../models/sigma';
 @Injectable()
 export class LEDService {
 
-  constructor(private env: Env,
+  constructor(private env: EnvService,
               private http: Http) { }
 
   getSettings(): Observable<Setting[]> {

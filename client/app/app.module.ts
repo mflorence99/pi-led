@@ -4,13 +4,11 @@ import { ChartComponent } from './components/chart';
 import { ChartDataPipe } from './components/chart';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
-import { Env } from './services/env';
 import { ErrorComponent } from './components/error';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpModule } from '@angular/http';
 import { LEDService } from './services/led';
 import { LightsComponent } from './components/lights';
-import { MaterialModule } from '@angular/material';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NgModule } from '@angular/core';
 import { PiModule } from '@mflo999/pi-lib';
@@ -34,9 +32,11 @@ const DECLARATIONS = [
 ];
 
 @NgModule({
+
   declarations: [
     ...DECLARATIONS
   ],
+
   imports: [
     BrowserModule,
     CommonModule,
@@ -44,24 +44,25 @@ const DECLARATIONS = [
     EffectsModule.run(SigmasEffects),
     FlexLayoutModule,
     HttpModule,
-    MaterialModule,
     Ng2GoogleChartsModule,
     PiModule,
-    StoreModule.provideStore(reducers)
+    StoreModule.provideStore(reducers) 
   ],
+
   exports: [
     ...DECLARATIONS,
     Ng2GoogleChartsModule,
     FlexLayoutModule,
-    MaterialModule,
     PiModule,
     StoreModule
   ],
+
   providers: [
-    Env,
     LEDService
   ],
+
   bootstrap: [AppComponent]
+
 })
 
 export class AppModule { }

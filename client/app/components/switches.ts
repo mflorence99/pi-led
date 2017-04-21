@@ -10,8 +10,8 @@ import { Store } from '@ngrx/store';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'led-switches',
-  templateUrl: './switches.html',
-  styleUrls: ['./switches.less']
+  templateUrl: 'switches.html',
+  styleUrls: ['switches.less']
 })
 
 export class SwitchesComponent {

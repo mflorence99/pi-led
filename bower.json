@@ -1,24 +1,6 @@
 {
   "name": "pi-led",
   "dependencies": {
-    "paper-button": "PolymerElements/paper-button#2.0-preview",
-    "paper-checkbox": "PolymerElements/paper-checkbox#2.0-preview",
-    "paper-spinner": "PolymerElements/paper-spinner#2.0-preview",
-    "polymer": "Polymer/polymer#^2",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^1"
-  },
-  "resolutions": {
-    "polymer": "^2",
-    "webcomponentsjs": "^v1.0.0-rc.5",
-    "iron-flex-layout": "2.0-preview",
-    "paper-behaviors": "2.0-preview",
-    "iron-behaviors": "2.0-preview",
-    "iron-checked-element-behavior": "2.0-preview",
-    "iron-validatable-behavior": "2.0-preview",
-    "iron-meta": "2.0-preview",
-    "iron-form-element-behavior": "2.0-preview",
-    "paper-ripple": "2.0-preview",
-    "iron-a11y-keys-behavior": "2.0-preview",
-    "paper-styles": "2.0-preview"
+    "pi-lib": "latest"
   }
 }

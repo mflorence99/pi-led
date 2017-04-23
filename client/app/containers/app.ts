@@ -20,12 +20,12 @@ export class AppComponent {
   settings: Observable<settingsReducer.State>;
   sigmas: Observable<sigmasReducer.State>;
 
-  constructor(private env: EnvService,
-              private store: Store<AppState>) {
+  constructor(env: EnvService,
+              store: Store<AppState>) {
     console.log(config);
-    console.log(this.env);
-    this.settings = this.store.select(state => state.settings);
-    this.sigmas = this.store.select(state => state.sigmas);
+    console.log(env);
+    this.settings = store.select(state => state.settings);
+    this.sigmas = store.select(state => state.sigmas);
   }
 
 }

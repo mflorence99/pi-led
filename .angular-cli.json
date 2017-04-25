@@ -8,7 +8,6 @@
       "root": "client",
       "outDir": "dist",
       "assets": [
-        "assets",
         "bower_components",
         "elements.html",
         "favicon.ico",

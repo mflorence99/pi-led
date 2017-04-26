@@ -1,4 +1,4 @@
-import {$WebSocket} from 'angular2-websocket/angular2-websocket';
+import { $WebSocket } from 'angular2-websocket/angular2-websocket';
 import { EnvService } from 'pi-lib';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';

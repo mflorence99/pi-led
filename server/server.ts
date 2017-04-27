@@ -21,5 +21,5 @@ app.get('/isalive', isalive);
 leds(app);
 app.get('*', content);
 
-deploy(app, 3000);
-sigmas(app, 4000);
+deploy(app, 3001);
+sigmas(app, 4001);
